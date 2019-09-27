@@ -1,30 +1,36 @@
 import React from 'react'
 import Link from 'next/link'
+import {inject, observer} from "mobx-react";
 
 const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' }
+	{href: '/home', label: 'Home'},
+	{href: '/about', label: 'About us'},
+	{href: '/services', label: 'Services'},
+	{href: '/community', label: 'Community'},
+	{href: '/contact', label: 'Contact Us'},
 ].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
-
-const Nav = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link href='/'>
-          <a>Home</a>
-        </Link>
-      </li>
-      {links.map(({ key, href, label }) => (
-        <li key={key}>
-          <a href={href}>{label}</a>
-        </li>
-      ))}
-    </ul>
-
-    <style jsx>{`
+	link.key = `nav-link-${link.href}-${link.label}`;
+	return link
+});
+const Nav = (props) => (
+	<nav>
+		<button onClick={() =>{
+			props.store.isLoggedInHandler()
+		}}>{props.store.status()}</button>
+		<ul>
+			<li>
+				<Link href='/'>
+					<a>Zanta 📸</a>
+				</Link>
+			</li>
+			{links.map(({key, href, label}) => (
+				<Link href={href} key={key}>
+						<a href={href}>{label}</a>
+				</Link>
+			))}
+		</ul>
+		
+		<style jsx>{`
       :global(body) {
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
@@ -36,6 +42,7 @@ const Nav = () => (
       ul {
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
       nav > ul {
         padding: 4px 16px;
@@ -50,7 +57,7 @@ const Nav = () => (
         font-size: 13px;
       }
     `}</style>
-  </nav>
-)
+	</nav>
+);
 
-export default Nav
+export default inject("store")(observer(Nav));
