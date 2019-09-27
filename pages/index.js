@@ -1,19 +1,19 @@
 import React from 'react'
 import Layout from '../components/layout';
-import { inject, observer } from 'mobx-react'
+import {inject, observer} from 'mobx-react'
 
 //debugging tools
 
 // @inject('store')
 // @observer
 const Home = (props) => (
-		<Layout>
-			<div className='hero'>
-				{console.log(props)}
-				<h1 className='title'>Welcome to Next.js!</h1>
-			</div>
-			
-			<style jsx>{`
+    <Layout>
+        <div className='hero'>
+            {console.log(props)}
+            <h1 className='title'>Welcome to Next.js!</h1>
+        </div>
+
+        <style jsx>{`
       .hero {
         width: 100%;
         color: #333;
@@ -59,6 +59,6 @@ const Home = (props) => (
         color: #333;
       }
     `}</style>
-		</Layout>
+    </Layout>
 );
-export default  inject('store')(observer(Home));
+export default inject('store')(observer(Home));

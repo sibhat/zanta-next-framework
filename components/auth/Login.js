@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography, Input, FormControl, InputLabel, makeStyles} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import { Button, Typography, Input, FormControl, InputLabel, makeStyles} from "@material-ui/core";
+
 const useStyles = makeStyles(theme => ({
 	container: {
 		display: 'flex',
@@ -15,15 +15,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Login = (props) => {
+	const classes = useStyles();
+
 	const { value, index, ...other } = props;
 	const [user, setUser] = React.useState({email: "", password: ""});
 	
 	
-	const classes = useStyles();
 	const handleChange = event => {
 		setUser({...user, [event.target.name]: event.target.value});
 	};
-	
 	return (
 		<Typography
 			component="div"
@@ -31,8 +31,8 @@ const Login = (props) => {
 			hidden={value !== index}
 			id={`action-tabpanel-${index}`}
 			aria-labelledby={`action-tab-${index}`}
-			{...other}
 			className={classes.container}
+			{...other}
 		>
 			<form onSubmit={e=>console.log(e)}>
 				<FormControl className={classes.formControl}>
