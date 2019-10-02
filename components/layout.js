@@ -10,6 +10,8 @@ export default inject('store') (observer ((props) =>{
 					<title>Home</title>
 					<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 					<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+					{/*<meta name="google-signin-client_id" content="282058802346-opfdtjcjj8mgc9ebscka9mvquejvmsva.apps.googleusercontent.com"/>*/}
+			
 			</Head>
 			<Nav />
 			{props.store.isDisplay && <Auth isDisplay={props.store.isDisplay}/>}

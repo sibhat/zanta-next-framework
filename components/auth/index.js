@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import {makeStyles, useTheme, Tab, Tabs} from "@material-ui/core";
 import Login from './Login';
 import SignUp from './SignUp';
+import SocialAuth from "./SocialGoogleAuth";
 const useStyles = makeStyles(theme => ({
 	root: {
 		padding: theme.spacing(3, 2),
@@ -51,6 +52,7 @@ const Auth = () => {
 
 				  }
 				`}</style>
+				<SocialAuth />
 			</Paper>
 	);
 };
