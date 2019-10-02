@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout';
+import Layout from '../src/components/layout';
 import {inject, observer} from 'mobx-react'
 
 //debugging tools

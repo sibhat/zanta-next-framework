@@ -1,18 +1,6 @@
 import React from 'react';
-import { Button, Typography, Input, FormControl, InputLabel, makeStyles} from "@material-ui/core";
-
-const useStyles = makeStyles(theme => ({
-	container: {
-		display: 'flex',
-		flexWrap: 'wrap',
-	},
-	formControl: {
-		margin: theme.spacing(1),
-	},
-	button: {
-		margin: theme.spacing(1),
-	},
-}));
+import { Button, Typography, Input, FormControl, InputLabel} from "@material-ui/core";
+import {useStyles} from "./style";
 
 const Login = (props) => {
 	const classes = useStyles();
@@ -34,7 +22,7 @@ const Login = (props) => {
 			className={classes.container}
 			{...other}
 		>
-			<form onSubmit={e=>console.log(e)}>
+			<form onSubmit={e=>console.log(e)} className={classes.form}>
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="auth-email">Email</InputLabel>
 					<Input id="auth-email" value={user.email} name={"email"} onChange={handleChange} />
@@ -43,7 +31,7 @@ const Login = (props) => {
 					<InputLabel htmlFor="auth-password">Password</InputLabel>
 					<Input id="auth-password" value={user.password} name={"password"} onChange={handleChange} />
 				</FormControl>
-				<Button variant="contained" className={classes.button}>
+				<Button variant="contained" color='primary' className={classes.button}>
 					Login
 				</Button>
 			</form>

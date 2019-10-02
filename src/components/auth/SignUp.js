@@ -1,20 +1,7 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
-import {FormControl, Input, InputLabel, makeStyles, Button} from "@material-ui/core";
-
-const useStyles = makeStyles(theme => ({
-	container: {
-		display: 'flex',
-		flexWrap: 'wrap',
-	},
-	formControl: {
-		margin: theme.spacing(1),
-		
-	},
-	button: {
-		margin: theme.spacing(1),
-	},
-}));
+import {FormControl, Input, InputLabel, Button} from "@material-ui/core";
+import {useStyles} from "./style";
 
 const SignUp = (props) => {
 	const { value, index, ...other } = props;
@@ -52,7 +39,7 @@ const SignUp = (props) => {
 					<Input id="auth-password" value={user.password} name={"password"} onChange={handleChange} />
 				</FormControl>
 
-				<Button variant="contained" className={classes.button}>
+				<Button variant="contained" color='primary' className={classes.button}>
 					Sign Up
 				</Button>
 			</form>
