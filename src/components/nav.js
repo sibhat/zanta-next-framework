@@ -3,7 +3,7 @@ import Link from 'next/link'
 import {inject, observer} from "mobx-react";
 
 const links = [
-	{href: '/home', label: 'Home'},
+	{href: '/', label: 'Home'},
 	{href: '/about', label: 'About us'},
 	{href: '/services', label: 'Services'},
 	{href: '/community', label: 'Community'},
@@ -34,7 +34,6 @@ const Nav = (props) => {
 				</Link>
 			))}
 		</ul>
-		
 		<style jsx>{`
       :global(body) {
         margin: 0;

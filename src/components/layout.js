@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react';
 import Auth from './auth';
 export default inject('store') (observer ((props) =>{
 	return (
-		<div>
+		<div className={props.className}>
 			<Head>
 					<title>Home</title>
 			</Head>
