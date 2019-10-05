@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button} from "@material-ui/core";
+import api from "../../../config/axios";
 // import PropTypes from 'prop-types';
 
 const SCOPE = 'email profile';
@@ -41,7 +42,6 @@ class SocialGoogleAuth extends Component {
 			
 			// Handle initial sign-in state. (Determine if user is already signed in.)
 			// this.user = window.GoogleAuth.currentUser.get();
-			this.setState({user: window.GoogleAuth.currentUser.get()});
 			this.setSigninStatus();
 		});
 	};
@@ -60,11 +60,21 @@ class SocialGoogleAuth extends Component {
 	handleAuthClick = () => {
 		if (window.GoogleAuth.isSignedIn.get()) {
 			// User is authorized and has clicked 'Sign out' button.
-			window.GoogleAuth.signOut();
+			window.GoogleAuth.signOut().then(() => {
+				this.props.logOut()
+			});
 			this.setState({isSignedIn: false, user: null})
 		} else {
 			// User is not signed in. Start Google auth flow.
-			window.GoogleAuth.signIn();
+			window.GoogleAuth.grantOfflineAccess().then(res => {
+				api
+					.post('/users/token', {code: res.code})
+					.then(res => {
+						this.props.socialAuthLogin(res.data)
+						localStorage.setItem('user_token', res.headers.authorization)
+					})
+					.catch(err => console.log({err}));
+			})
 		}
 	};
 	
@@ -87,10 +97,10 @@ class SocialGoogleAuth extends Component {
 		return (
 			<div style={classes.center}>
 				<p> -- OR -- </p>
-				<Button onClick={this.handleAuthClick} variant="outlined" >
-					{ this.state.isSignedIn ? "Log out " : "Sign In with Google" }
+				<Button onClick={this.handleAuthClick} variant="outlined">
+					{this.state.isSignedIn ? "Log out " : "Sign In with Google"}
 				</Button>
-				<Button onClick={this.revokeAccess} variant="outlined" >Revoke access</Button>
+				<Button onClick={this.revokeAccess} variant="outlined">Revoke access</Button>
 			</div>
 		);
 	}

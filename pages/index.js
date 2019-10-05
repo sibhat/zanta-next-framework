@@ -2,17 +2,11 @@ import React from 'react'
 import Layout from '../src/components/layout';
 import {inject, observer} from 'mobx-react'
 
-//debugging tools
-
-// @inject('store')
-// @observer
-const Home = (props) => (
+const Home = () => (
     <Layout>
         <div className='hero'>
-            {console.log(props)}
             <h1 className='title'>Welcome to Next.js!</h1>
         </div>
-
         <style jsx>{`
       .hero {
         width: 100%;

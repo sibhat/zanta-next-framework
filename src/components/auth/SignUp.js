@@ -13,19 +13,13 @@ const SignUp = (props) => {
 	const handleChange = event => {
 		setUser({...user, [event.target.name]: event.target.value});
 	};
+	const onSubmit = (e) =>{
+		e.preventDefault();
+		props.register(user);
+	};
 
 	return (
-		<Typography
-			component="div"
-			role="tabpanel"
-			hidden={value !== index}
-			id={`action-tabpanel-${index}`}
-			aria-labelledby={`action-tab-${index}`}
-			className={classes.container}
-			{...other}
-		>
-			<form action="">
-
+			<form onSubmit={onSubmit} className={`${classes.form + classes.container}`} hidden={value !== index} >
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="auth-email">Email</InputLabel>
 					<Input id="auth-email" value={user.email} name={"email"} onChange={handleChange} />
@@ -39,11 +33,10 @@ const SignUp = (props) => {
 					<Input id="auth-password" value={user.password} name={"password"} onChange={handleChange} />
 				</FormControl>
 
-				<Button variant="contained" color='primary' className={classes.button}>
+				<Button variant="contained" color='primary' className={classes.button} onClick={onSubmit}>
 					Sign Up
 				</Button>
 			</form>
-		</Typography>
 	);
 };
 

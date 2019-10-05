@@ -1,11 +1,11 @@
 import { types, applySnapshot } from 'mobx-state-tree'
 
-import DisplayAuth from '../store/Auth';
-
+import DisplayAuth from './Auth';
+import User from './User'
 //debugging tools
 import makeInspectable from 'mobx-devtools-mst';
 
-let store = types.compose(DisplayAuth, DisplayAuth).named("store");
+let store = types.compose(DisplayAuth, User).named("store");
 
 makeInspectable(store);
 //

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Link from 'next/link'
 import {inject, observer} from "mobx-react";
 
@@ -12,11 +12,16 @@ const links = [
 	link.key = `nav-link-${link.href}-${link.label}`;
 	return link
 });
-const Nav = (props) => (
+const Nav = (props) => {
+	let [status, setStatus] = useState('loading..');
+	useEffect(()=>{
+		setStatus(props.store.status());
+	},[props.store.isAuthenticated]);
+	return(
 	<nav>
 		<button onClick={() =>{
-			props.store.isLoggedInHandler()
-		}}>{props.store.status()}</button>
+			props.store.toggleAuth()
+		}}>{status}</button>
 		<ul>
 			<li>
 				<Link href='/'>
@@ -58,6 +63,6 @@ const Nav = (props) => (
       }
     `}</style>
 	</nav>
-);
+)};
 
 export default inject("store")(observer(Nav));

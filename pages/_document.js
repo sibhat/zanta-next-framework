@@ -7,7 +7,7 @@ class MyDocument extends Document {
 	render() {
 		return (
 			<html lang="en">
-			{/*<Head>*/}
+			<Head>
 				<meta charSet="utf-8" />
 				<meta
 					name="viewport"
