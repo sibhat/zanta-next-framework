@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 	bgImage:{
 		backgroundImage: "url('/static/services-1.jpg')",
 		opacity: '0.5',
-		backgroundColor: 'black',
+		filter: 'blur(2px)',
 		backgroundSize: "cover",
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center',

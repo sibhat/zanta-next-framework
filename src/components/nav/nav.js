@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Link from 'next/link'
-import {inject, observer} from "mobx-react";
+import AppBar from '@material-ui/core/AppBar';
 
 const links = [
 	{href: '/', label: 'Home'},
@@ -13,28 +13,24 @@ const links = [
 	return link
 });
 const Nav = (props) => {
-	let [status, setStatus] = useState('loading..');
-	useEffect(()=>{
-		setStatus(props.store.status());
-	},[props.store.isAuthenticated]);
 	return(
-	<nav>
-		<button onClick={() =>{
-			props.store.toggleAuth()
-		}}>{status}</button>
-		<ul>
-			<li>
-				<Link href='/'>
-					<a>Zanta 📸</a>
-				</Link>
-			</li>
-			{links.map(({key, href, label}) => (
-				<Link href={href} key={key}>
+		<AppBar position="static">
+			<ul>
+				<li>
+					<Link href='/'>
+						<a>Zanta 📸</a>
+					</Link>
+				</li>
+				{links.map(({key, href, label}) => (
+					<Link href={href} key={key}>
 						<a href={href}>{label}</a>
-				</Link>
-			))}
-		</ul>
-		<style jsx>{`
+					</Link>
+				))}
+				<button onClick={() =>{
+					props.store.toggleAuth()
+				}}>{props.status}</button>
+			</ul>
+			<style jsx>{`
       :global(body) {
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
@@ -61,7 +57,7 @@ const Nav = (props) => {
         font-size: 13px;
       }
     `}</style>
-	</nav>
-)};
+		</AppBar>
+	)};
 
-export default inject("store")(observer(Nav));
+export default Nav;

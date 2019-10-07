@@ -10,7 +10,12 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		padding: theme.spacing(3, 2),
 		width: '500px',
-		margin: 'auto'
+		margin: 'auto',
+		position: 'fixed',
+		left: '50%',
+		top: 200,
+		transform: 'translate(-50%)',
+		zIndex: 10
 	},
 }));
 

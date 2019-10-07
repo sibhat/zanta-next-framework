@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from "next/head";
-import Nav from "./nav";
+import Nav from "./nav/index";
 import { observer, inject } from 'mobx-react';
 import Auth from './auth';
 export default inject('store') (observer ((props) =>{
