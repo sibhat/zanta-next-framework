@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from 'react'
-import Link from 'next/link'
-import {inject, observer} from "mobx-react";
+import React from 'react'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -12,6 +10,12 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import {MenuItem, Menu} from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
+	root: {
+		boxShadow: 'none',
+		marginTop: theme.spacing(2),
+		backgroundColor: 'transparent',
+		color: 'white'
+	},
 	grow: {
 		flexGrow: 1,
 	},
@@ -156,7 +160,7 @@ export default function PrivateNav(props) {
 	
 	return (
 		<div className={classes.grow}>
-			<AppBar position="static">
+			<AppBar position="static"  className={classes.root}>
 				<Toolbar>
 					<IconButton
 						edge="start"

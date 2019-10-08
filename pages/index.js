@@ -1,58 +1,55 @@
 import React from 'react'
 import Layout from '../src/components/layout';
 import {inject, observer} from 'mobx-react'
+import {Button} from "@material-ui/core";
+import About from '../src/features/about/about';
+import Service from './services';
+import Community from '../src/features/community/community';
+import Contact from './contact';
 
 const Home = () => (
-    <Layout>
-        <div className='hero'>
-            <h1 className='title'>Welcome to Next.js!</h1>
-        </div>
-        <style jsx>{`
-      .hero {
+	<Layout>
+		<div className='landingPage'>
+			<div className="center">
+				<h1 className='title'>We help you to plan your wedding easily.</h1>
+				<p>Perfect day & perfect time</p>
+				<Button color={'primary'} variant="contained" >View More</Button>
+			</div>
+		</div>
+		<About />
+		<Service />
+		<Community />
+		<Contact />
+		<style jsx>{`
+      .landingPage {
         width: 100%;
         color: #333;
+        background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/static/about-1.jpg');
+        min-height: 100vh;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        position: relative;
+        top: -100px;
+        left: 0;
+        z-index: -1;
       }
       .title {
         margin: 0;
         width: 100%;
         padding-top: 80px;
         line-height: 1.15;
-        font-size: 48px;
+        font-size: 38px;
       }
-      .title,
-      .description {
+      .center{
+        margin: auto;
         text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     `}</style>
-    </Layout>
+	</Layout>
 );
 export default inject('store')(observer(Home));

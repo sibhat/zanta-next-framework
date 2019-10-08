@@ -71,6 +71,11 @@ MyDocument.getInitialProps = async ctx => {
 			<React.Fragment key="styles">
 				{initialProps.styles}
 				{sheets.getStyleElement()}
+				<style jsx>{`
+      body {
+        background-color: #606060;
+      }
+    `}</style>
 			</React.Fragment>,
 		],
 	};

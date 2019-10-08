@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import AppBar from '@material-ui/core/AppBar';
+import { AppBar, makeStyles, Toolbar, Button } from '@material-ui/core/';
 
 const links = [
-	{href: '/', label: 'Home'},
 	{href: '/about', label: 'About us'},
 	{href: '/services', label: 'Services'},
 	{href: '/community', label: 'Community'},
@@ -12,51 +11,44 @@ const links = [
 	link.key = `nav-link-${link.href}-${link.label}`;
 	return link
 });
+//
+const useStyles = makeStyles(theme => ({
+	toolbarSecondary: {
+		justifyContent: 'space-between',
+		overflowX: 'auto',
+	},
+	root: {
+		boxShadow: 'none',
+		marginTop: theme.spacing(2),
+		backgroundColor: 'transparent',
+		color: 'white'
+	},
+	a:{
+		color: 'white',
+		textDecoration: 'none',
+		'&:hover': {
+			textDecoration: 'underline',
+		}
+	}
+}));
 const Nav = (props) => {
+
+	const classes = useStyles();
 	return(
-		<AppBar position="static">
-			<ul>
-				<li>
-					<Link href='/'>
-						<a>Zanta 📸</a>
-					</Link>
-				</li>
-				{links.map(({key, href, label}) => (
-					<Link href={href} key={key}>
-						<a href={href}>{label}</a>
-					</Link>
-				))}
-				<button onClick={() =>{
+		<AppBar position="static" className={classes.root}>
+			<Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+				<Link href='/' >
+						<a className={classes.a}>Zanta 📸</a>
+				</Link>
+					{links.map(({key, href, label}) => (
+						<Link href={href} key={key} >
+								<a href={href} className={classes.a}>{label}</a>
+						</Link>
+					))}
+				<Button onClick={() =>{
 					props.store.toggleAuth()
-				}}>{props.status}</button>
-			</ul>
-			<style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
+				}} variant="contained" color={'primary'}>{props.status}</Button>
+			</Toolbar>
 		</AppBar>
 	)};
 

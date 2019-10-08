@@ -2,10 +2,9 @@ import React, {useState} from 'react';
 import Layout from "../src/components/layout";
 import {makeStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		textAlign: 'center',
-		padding: theme.spacing(3),
 		border: 'none',
 		boxShadow: 'none',
 		minHeight: '100vh',
