@@ -40,7 +40,7 @@ const community = () => {
 			cols: 3,
 		}];
 	return (
-		<React.Fragment>
+		<div className={classes.root}>
 			<h1>Community</h1>
 			<div className={classes.flex}>
 				<GridList cellHeight={300} className={classes.gridList} cols={3} style={{margin: 'auto'}}>
@@ -51,7 +51,7 @@ const community = () => {
 					))}
 				</GridList>
 			</div>
-		</React.Fragment>
+		</div>
 	);
 };
 
