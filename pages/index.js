@@ -3,9 +3,9 @@ import Layout from '../src/components/layout';
 import {inject, observer} from 'mobx-react'
 import {Button} from "@material-ui/core";
 import About from '../src/features/about/about';
-import Service from './services';
+import Service from '../src/features/service/services';
 import Community from '../src/features/community/community';
-import Contact from './contact';
+import Contact from '../src/features/contact/contact';
 
 const Home = () => (
 	<Layout>
