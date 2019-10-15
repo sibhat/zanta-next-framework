@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(3),
 		border: 'none',
 		boxShadow: 'none',
+		marginTop: -100
 	},
 	paper: {
 		padding: theme.spacing(2),
